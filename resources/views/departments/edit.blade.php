@@ -1,35 +1,23 @@
-<div><a href="/">Home</a></div>
-<a href="{{ route('departments.create') }}">New Department</a>
+<div style="margin-bottom: 1em;">
+    <a href="{{ route('departments.index') }}">Department List</a>
+</div>
+
+<h1>Edit Department</h1>
 
 @if(session('message'))
     <div style="color: green;">{{ session('message') }}</div>
 @endif
 
-<table cellpadding="10" cellpacing="1" border="1" >
-    <thead>
-    <tr>
-        <td>No.</td>
-        <td>Name</td>
-        <td>Action</td>
-    </tr>
-    </thead>
-    <tbody>
-    @forelse($departments as $key => $department)
-        <tr>
-            <td>{{ $departments->firstItem() + $key }}.</td>
-            <td>{{ $department->name }}</td>
-            <td>
-                <a href="{{ route('departments.edit', $department) }}">Edit</a>
-
-                <form action="{{ route('$departments.delete', $department) }}" method="post"></form>
-                @csrf
-                <button type="submit">Delete</button>
-            </td>
-        </tr>
-    @empty
-        <tr>
-            <td colspan="5">No data found in table</td>
-        </tr>
-    @endforelse
-    </tbody>
-</table>
+<form action="{{ route('departments.edit', $department) }}" method="post">
+    @csrf
+        <div style="margin-bottom: 1em;">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter department" value="{{ $department->name }}">
+            @error('name')
+            <div style="color: red;">{{ $message }}</div>
+            @enderror
+        </div>
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>

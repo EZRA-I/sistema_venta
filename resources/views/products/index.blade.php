@@ -2,7 +2,7 @@
 <a href="{{ route('products.create') }}">New Product</a>
 
 @if(session('message'))
-    <div style="color: green;">{{ route('message') }}</div>
+    <div style="color: green;">{{ session('message') }}</div>
 @endif
 
 <table cellpadding="10" cellspacing="1" border="1" >

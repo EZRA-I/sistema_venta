@@ -11,6 +11,7 @@
         <td>No.</td>
         <td>Name</td>
         <td>Action</td>
+        <td>Timestamp</td>
     </tr>
     </thead>
     <tbody>
@@ -21,7 +22,7 @@
             <td>
                 <a href="{{ route('departments.edit', $department) }}">Edit</a>
 
-                <form action="{{ route('$departments.delete', $department) }}" method="post">
+                <form action="{{ route('departments.delete', $department) }}" method="post">
                     @csrf
                     <button type="submit">Delete</button>
                 </form>

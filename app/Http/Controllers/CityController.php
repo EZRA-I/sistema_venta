@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
 use App\Models\Department;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -17,7 +17,7 @@ class CityController extends Controller
 
     public function create()
     {
-        $departments = department::orderBy('name')->get();
+        $departments = Department::orderBy('name')->get();
         return view('cities.create', compact('departments'));
     }
 
@@ -35,7 +35,7 @@ class CityController extends Controller
 
     public function edit(City $city)
     {
-        $departments =Department::orderBy('name')->get();
+        $departments = Department::orderBy('name')->get();
         return view ('cities.edit', compact('city', 'departments'));
     }
 
@@ -55,6 +55,6 @@ class CityController extends Controller
     {
         $city->delete();
 
-        return back()->with('message', 'City delete.');
+        return back()->with('message', 'City deleted.');
     }
 }
