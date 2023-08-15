@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CityController;
-
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProductController;
 
 
 
@@ -89,6 +89,26 @@ Route::post('/cities/edit/{city}', [CityController::class, 'update'])->name('cit
 
 //Elimina una ciudad por el id
 Route::post('/cities/delete/{city}', [CityController::class, 'destroy'])->name('cities.delete');
+
+//Employee
+
+//Muestra una tabla con todas los empleados
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
+
+//Muestra un formulario para crear un empleado
+Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
+
+//Recibe los datos del formulario para crear un empleado
+Route::post('/employees/create', [EmployeeController::class, 'store'])->name('employees.create');
+
+//Muestra un formulario para editar un empleado
+Route::get('/employees/edit/{employee}', [EmployeeController::class, 'edit'])->name('employees.edit');
+
+//Recibe los datos del formulario para editar un empleado
+Route::post('/employees/edit/{employee}', [EmployeeController::class, 'update'])->name('employees.edit');
+
+//Elimina un empleado por el id
+Route::post('/employees/delete/{employee}', [EmployeeController::class, 'destroy'])->name('employees.delete');
 
 Route::get('/', function () {
     return view('welcome');

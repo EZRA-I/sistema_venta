@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
 use App\Models\City;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -23,12 +23,14 @@ class CityController extends Controller
 
     public function store(Request $request)
     {
-        $data=$request->validate([
+        $data = $request->validate([
             'name' => 'required|max:255',
+            'description' => 'required|max:255',
+
             'department_id' =>'required|integer'
         ]);
 
-        City::created($data);
+        City::create($data);
 
         return back()->with('message', 'City created.');
     }
@@ -43,6 +45,7 @@ class CityController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|max:255',
+            'description' => 'required|max:255',
             'department_id' =>'required|integer',
         ]);
 

@@ -18,12 +18,19 @@
         @enderror
     </div>
     <div style="margin-bottom: 1em;">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" placeholder="Enter description" value="{{ $city->description }}">
+        @error('description')
+        <div style="color: red;">{{ $message }}"</div>
+        @enderror
+    </div>
+    <div style="margin-bottom: 1em;">
         <label for="department_id">Department</label>
         <select name="department_id" id="department_id">
             <option value="">Select</option>
             @foreach($departments as $department)
                 <option
-                    @if($department->id === (int)$city->department_id)
+                    @if ($department->id === (int)$city->department_id)
                         selected
                     @endif
                     value="{{ $department->id }}">{{ $department->name }}</option>

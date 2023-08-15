@@ -12,7 +12,7 @@
     @csrf
     <div style="margin-bottom: 1em;">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Enter product" value="{{ old('name') }}">
+        <input type="text" name="name" id="name" placeholder="Enter product name" value="{{ old('name') }}">
         @error('name')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
@@ -24,7 +24,7 @@
         <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
-    <div style="margin-bottom: 1em">
+    <div style="margin-bottom: 1em;">
         <label for="category_id">Category</label>
         <select name="category_id" id="category_id">
             <option value="">Select</option>
@@ -32,7 +32,7 @@
                 <option
                     @if($category->id === (int)old('category_id'))
                         selected
-0                    @endif
+                    @endif
                     value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
         </select>

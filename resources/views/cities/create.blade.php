@@ -12,7 +12,7 @@
     @csrf
     <div style="margin-bottom: 1em;">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name" placeholder="Enter city" value="{{ old('name') }}">
+        <input type="text" name="name" id="name" placeholder="Enter city name" value="{{ old('name') }}">
         @error('name')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
@@ -24,15 +24,15 @@
         <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
-    <div style="margin-bottom: 1em">
+    <div style="margin-bottom: 1em;">
         <label for="department_id">Department</label>
         <select name="department_id" id="department_id">
             <option value="">Select</option>
             @foreach($departments as $department)
                 <option
-                    @if($department->id === (int)old('department_id'))
+                    @if ($department->id === (int)old('department_id'))
                         selected
-                    0                    @endif
+                    @endif
                     value="{{ $department->id }}">{{ $department->name }}</option>
             @endforeach
         </select>

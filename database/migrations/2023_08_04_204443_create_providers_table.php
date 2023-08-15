@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
             $table->string('name', 60);
             $table->string('last_name', 60);
             $table->string('email', 100);
+            $table->string('phone', 20);
             $table->timestamps();
         });
     }

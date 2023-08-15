@@ -11,10 +11,14 @@ class Employee extends Model
 
     use HasFactory;
 
-    protected  $fillable =['name', 'last_name', 'email', 'phone'];
+    protected  $fillable =['city_id', 'name', 'last_name', 'post', 'address', 'email', 'phone'];
 
-    public function bills() {
-        return $this->hasMany(Bill::class);
+    //public function bills()
+    //{
+        //return $this->hasMany(Bill::class); //uno a muchos
+   // }
+    public function city()
+    {
+        return $this->belongsTo(City::class); //Esta vayna aqui es la llave foranea
     }
-
 }

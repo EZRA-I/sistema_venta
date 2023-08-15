@@ -2,10 +2,10 @@
 <a href={{ route('cities.create') }}>New City</a>
 
 @if(session('message'))
-    <div style="color:  green;">{{ session('message') }}</div>
+    <div style="color: green;">{{ session('message') }}</div>
 @endif
 
-<table cellpadding="10" cellpacing="1" border="1">
+<table cellpadding="10" cellspacing="1" border="1" >
     <thead>
     <tr>
         <td>No.</td>
@@ -20,7 +20,6 @@
             <td>{{ $cities->firstItem() + $key }}.</td>
             <td>{{ $city->name }}</td>
             <td>{{ $city->description }}</td>
-
             <td>
                 {{ $city->department->name }}
             </td>

@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name', 60);
             $table->string('last_name', 60);
+            $table->string('post', 25);
             $table->string('email', 100);
+            $table->string('address', 40);
             $table->string('phone', 20);
-            $table->string('direction', 50);
+            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

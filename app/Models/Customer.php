@@ -7,12 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+
+
     use HasFactory;
 
-    protected  $fillable =['name', 'last_name', 'email'];
+    protected  $fillable =['bill_id','city_id','name', 'last_name', 'email', 'phone'];
 
-    public function bills() {
-        return $this->hasMany(Bill::class);
+    //public function bills()
+    //{
+        //return $this->hasMany(Bill::class); //uno a muchos
+    //}
+    public function city()
+    {
+        return $this->belongsTo(City::class); //Esta vayna aqui es la llave foranea
     }
 
 }
