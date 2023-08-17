@@ -11,7 +11,7 @@ class Customer extends Model
 
     use HasFactory;
 
-    protected  $fillable =['bill_id','city_id','name', 'last_name', 'email', 'phone'];
+    protected  $fillable =['city_id','name', 'last_name', 'email', 'address', 'phone'];
 
     //public function bills()
     //{

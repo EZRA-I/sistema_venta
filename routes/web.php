@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProviderController;
 
 
 
@@ -23,11 +25,22 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 
 //CATEGORY
 
+//Muestra una tabla con todos los category
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+//Muestra un formulario para crear un category
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+
+//Recibe los datos del formulario para crear una category
 Route::post('/categories/create', [CategoryController::class, 'store'])->name('categories.create');
+
+//Muestra un formulario para editar un category
 Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
+
+//Recibe los datos del formulario para editar un category
 Route::post('/categories/edit/{category}', [CategoryController::class, 'update'])->name('categories.edit');
+
+//Elimina un category por el id
 Route::post('/categories/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.delete');
 
 //PRODUCT
@@ -109,6 +122,49 @@ Route::post('/employees/edit/{employee}', [EmployeeController::class, 'update'])
 
 //Elimina un empleado por el id
 Route::post('/employees/delete/{employee}', [EmployeeController::class, 'destroy'])->name('employees.delete');
+
+
+//Customers
+
+//Muestra una tabla con todas los empleados
+Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+
+//Muestra un formulario para crear un empleado
+Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+
+//Recibe los datos del formulario para crear un empleado
+Route::post('/customers/create', [CustomerController::class, 'store'])->name('customers.create');
+
+//Muestra un formulario para editar un empleado
+Route::get('/customers/edit/{customer}', [CustomerController::class, 'edit'])->name('customers.edit');
+
+//Recibe los datos del formulario para editar un empleado
+Route::post('/customers/edit/{customer}', [CustomerController::class, 'update'])->name('customers.edit');
+
+//Elimina un empleado por el id
+Route::post('/customers/delete/{customer}', [CustomerController::class, 'destroy'])->name('customers.delete');
+
+//Providers
+
+//Muestra una tabla con todas los provider
+Route::get('/providers', [ProviderController::class, 'index'])->name('providers.index');
+
+//Muestra un formulario para crear un provider
+Route::get('/providers/create', [ProviderController::class, 'create'])->name('providers.create');
+
+//Recibe los datos del formulario para crear un provider
+Route::post('/providers/create', [ProviderController::class, 'store'])->name('providers.create');
+
+//Muestra un formulario para editar un provider
+Route::get('/providers/edit/{provider}', [ProviderController::class, 'edit'])->name('providers.edit');
+
+//Recibe los datos del formulario para editar un provider
+Route::post('/providers/edit/{provider}', [ProviderController::class, 'update'])->name('providers.edit');
+
+//Elimina un provider por el id
+Route::post('/providers/delete/{provider}', [ProviderController::class, 'destroy'])->name('providers.delete');
+
+
 
 Route::get('/', function () {
     return view('welcome');

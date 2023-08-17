@@ -19,8 +19,7 @@ class CustomerController extends Controller
     public function create()
     {
         $cities = City::orderBy('name')->get();
-        //$bills = Bill::orderBy('description')->get();
-        return view('customers.create', compact('cities' )); //'bills'
+        return view('customers.create', compact('cities' )); //bills
     }
 
     public function store(Request $request)
@@ -30,8 +29,8 @@ class CustomerController extends Controller
             'last_name' => 'required|max:255',
             'email' => 'required|max:255',
             'phone' => 'required|max:255',
+            'address' => 'required|max:255',
             'city_id' =>'required|integer',
-            //'bill_id' =>'required|integer',
 
         ]);
 
@@ -40,11 +39,11 @@ class CustomerController extends Controller
         return back()->with('message', 'Customer created.');
     }
 
+
     public function edit(Customer $customer)
     {
         $cities = City::orderBy('name')->get();
-        //$bills = Bill::orderBy('description')->get();
-        return view ('customers.edit', compact('customer', 'cities')); //'bills'
+        return view ('customers.edit', compact('customer', 'cities')); //'bills
     }
 
     public function update(Customer $customer, Request $request)
@@ -53,9 +52,9 @@ class CustomerController extends Controller
             'name' => 'required|max:255',
             'last_name' => 'required|max:255',
             'email' => 'required|max:255',
+            'address' => 'required|max:255',
             'phone' => 'required|max:255',
             'city_id' =>'required|integer',
-            //'bill_id' =>'required|integer',
         ]);
 
         $customer->update($data);

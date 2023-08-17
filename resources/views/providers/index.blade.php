@@ -1,5 +1,5 @@
 <div><a href="/">Home</a></div>
-<a href={{ route('employees.create') }}>New Employee</a>
+<a href={{ route('providers.create') }}>New Provider</a>
 
 @if(session('message'))
     <div style="color: green;">{{ session('message') }}</div>
@@ -20,23 +20,23 @@
     </tr>
     </thead>
     <tbody>
-    @forelse($employees as $key => $employee)
+    @forelse($providers as $key => $provider)
         <tr>
-            <td>{{ $employees->firstItem() + $key }}.</td>
-            <td>{{ $employee->name }}</td>
-            <td>{{ $employee->last_name }}</td>
-            <td>{{ $employee->email }}</td>
-            <td>{{ $employee->post }}</td>
-            <td>{{ $employee->address }}</td>
-            <td>{{ $employee->phone }}</td>
-
+            <td>{{ $providers->firstItem() + $key }}.</td>
+            <td>{{ $provider->name }}</td>
+            <td>{{ $provider->last_name }}</td>
+            <td>{{ $provider->email }}</td>
+            <td>{{ $provider->post }}</td>
+            <td>{{ $provider->address }}</td>
+            <td>{{ $provider->phone }}</td>
             <td>
-                {{ $employee->city->name }}
+                {{ $provider->city->name }}
             </td>
-            <td>
-                <a href="{{ route('employees.edit', $employee) }}">Edit</a>
 
-                <form action="{{ route('employees.delete', $employee) }}" method="post">
+            <td>
+                <a href="{{ route('providers.edit', $provider) }}">Edit</a>
+
+                <form action="{{ route('providers.delete', $provider) }}" method="post">
                     @csrf
                     <button type="submit">Delete</button>
                 </form>

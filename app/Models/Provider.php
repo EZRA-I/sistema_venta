@@ -9,9 +9,10 @@ class Provider extends Model
 {
     use HasFactory;
 
-    protected $fillable =['name', 'last_name', 'email', 'phone', 'direction'];
-
-    public function product() {
-        return $this->belongsTo(Product::class);
+    protected $fillable =['city_id', 'name', 'last_name', 'post', 'address', 'email', 'phone'];
+    
+    public function city()
+    {
+        return $this->belongsTo(City::class); //Esta vayna aqui es la llave foranea
     }
 }

@@ -37,6 +37,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::orderBy('name')->get();
+
         return view('products.edit', compact('product', 'categories'));
     }
 

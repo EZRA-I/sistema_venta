@@ -1,5 +1,5 @@
 <div><a href="/">Home</a></div>
-<a href={{ route('employees.create') }}>New Employee</a>
+<a href={{ route('customers.create') }}>New Customer</a>
 
 @if(session('message'))
     <div style="color: green;">{{ session('message') }}</div>
@@ -12,31 +12,28 @@
         <td>Name</td>
         <td>Last_name</td>
         <td>Email</td>
-        <td>Post</td>
-        <td>Address</td>
         <td>Phone</td>
+        <td>Address</td>
         <td>City</td>
         <td>Action</td>
     </tr>
     </thead>
     <tbody>
-    @forelse($employees as $key => $employee)
+    @forelse($customers as $key => $customer)
         <tr>
-            <td>{{ $employees->firstItem() + $key }}.</td>
-            <td>{{ $employee->name }}</td>
-            <td>{{ $employee->last_name }}</td>
-            <td>{{ $employee->email }}</td>
-            <td>{{ $employee->post }}</td>
-            <td>{{ $employee->address }}</td>
-            <td>{{ $employee->phone }}</td>
-
+            <td>{{ $customers->firstItem() + $key }}.</td>
+            <td>{{ $customer->name }}</td>
+            <td>{{ $customer->last_name }}</td>
+            <td>{{ $customer->email }}</td>
+            <td>{{ $customer->phone }}</td>
+            <td>{{ $customer->address }}</td>
             <td>
-                {{ $employee->city->name }}
+                {{ $customer->city->name }}
             </td>
             <td>
-                <a href="{{ route('employees.edit', $employee) }}">Edit</a>
+                <a href="{{ route('customers.edit', $customer) }}">Edit</a>
 
-                <form action="{{ route('employees.delete', $employee) }}" method="post">
+                <form action="{{ route('customers.delete', $customer) }}" method="post">
                     @csrf
                     <button type="submit">Delete</button>
                 </form>
