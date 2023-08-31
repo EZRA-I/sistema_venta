@@ -17,6 +17,7 @@ class CityController extends Controller
 
     public function create()
     {
+
         $departments = Department::orderBy('name')->get();
         return view('cities.create', compact('departments'));
     }
@@ -24,10 +25,9 @@ class CityController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
+            'department_id' =>'required|integer',
             'name' => 'required|max:255',
             'description' => 'required|max:255',
-
-            'department_id' =>'required|integer'
         ]);
 
         City::create($data);
@@ -38,15 +38,15 @@ class CityController extends Controller
     public function edit(City $city)
     {
         $departments = Department::orderBy('name')->get();
-        return view ('cities.edit', compact('city', 'departments'));
+        return view ('cities.edit', compact('city',  'departments'));
     }
 
     public function update(City $city, Request $request)
     {
         $data = $request->validate([
+            'department_id' =>'required|integer',
             'name' => 'required|max:255',
             'description' => 'required|max:255',
-            'department_id' =>'required|integer',
         ]);
 
         $city->update($data);

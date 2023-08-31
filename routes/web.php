@@ -10,6 +10,9 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\Detail_billController;
+
 
 
 
@@ -164,6 +167,49 @@ Route::post('/providers/edit/{provider}', [ProviderController::class, 'update'])
 //Elimina un provider por el id
 Route::post('/providers/delete/{provider}', [ProviderController::class, 'destroy'])->name('providers.delete');
 
+
+
+//Bill
+
+//Muestra una tabla con todas la bill
+Route::get('/bills', [BillController::class, 'index'])->name('bills.index');
+
+//Muestra un formulario para crear un bill
+Route::get('/bills/create', [BillController::class, 'create'])->name('bills.create');
+
+//Recibe los datos del formulario para crear un bill
+Route::post('/bills/create', [BillController::class, 'store'])->name('bills.create');
+
+//Muestra un formulario para editar un bill
+Route::get('/bills/edit/{bill}', [BillController::class, 'edit'])->name('bills.edit');
+
+//Recibe los datos del formulario para editar un bill
+Route::post('/bills/edit/{bill}', [BillController::class, 'update'])->name('bills.edit');
+
+//Elimina un bill por el id
+Route::post('/bills/delete/{bill}', [BillController::class, 'destroy'])->name('bills.delete');
+
+
+
+//Detail_billController
+
+//Muestra una tabla con todas la detail_bill
+Route::get('/detail_bills', [Detail_billController::class, 'index'])->name('detail_bills.index');
+
+//Muestra un formulario para crear un detail_bill
+Route::get('/detail_bills/create', [Detail_billController::class, 'create'])->name('detail_bills.create');
+
+//Recibe los datos del formulario para crear un detail_bill
+Route::post('/detail_bills/create', [Detail_billController::class, 'store'])->name('detail_bills.create');
+
+//Muestra un formulario para editar un detail_bill
+Route::get('/detail_bills/edit/{detail_bill}', [Detail_billController::class, 'edit'])->name('detail_bills.edit');
+
+//Recibe los datos del formulario para editar un detail_bill
+Route::post('/detail_bills/edit/{detail_bill}', [Detail_billController::class, 'update'])->name('detail_bills.edit');
+
+//Elimina un detail_bill por el id
+Route::post('/detail_bills/delete/{detail_bill}', [Detail_billController::class, 'destroy'])->name('detail_bills.delete');
 
 
 Route::get('/', function () {

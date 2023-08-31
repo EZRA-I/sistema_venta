@@ -11,7 +11,9 @@ class Department extends Model
 
     protected $fillable =['name'];
 
-    public function city() {
-        return $this->hasMany(City::class); // este es el permiso que le otorgare a city, para que departamento entre y retorne en city.
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
     }
 }

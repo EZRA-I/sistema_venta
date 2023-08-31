@@ -10,12 +10,13 @@
     <tr>
         <td>No.</td>
         <td>Name</td>
-        <td>Last_name</td>
+        <td>Surname</td>
         <td>Email</td>
         <td>Post</td>
         <td>Address</td>
         <td>Phone</td>
         <td>City</td>
+        <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -24,7 +25,7 @@
         <tr>
             <td>{{ $employees->firstItem() + $key }}.</td>
             <td>{{ $employee->name }}</td>
-            <td>{{ $employee->last_name }}</td>
+            <td>{{ $employee->surname }}</td>
             <td>{{ $employee->email }}</td>
             <td>{{ $employee->post }}</td>
             <td>{{ $employee->address }}</td>
@@ -33,6 +34,8 @@
             <td>
                 {{ $employee->city->name }}
             </td>
+
+            <td>{{ $employee->created_at->format('F d, Y') }}</td>
             <td>
                 <a href="{{ route('employees.edit', $employee) }}">Edit</a>
 

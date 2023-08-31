@@ -17,9 +17,9 @@
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div><div style="margin-bottom: 1em;">
-        <label for="last_name">Last_name</label>
-        <input type="text" name="last_name" id="last_name" placeholder="Enter last_name" value="{{ old('last_name') }}">
-        @error('last_name')
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" placeholder="Enter surname" value="{{ old('surname') }}">
+        @error('surname')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div><div style="margin-bottom: 1em;">

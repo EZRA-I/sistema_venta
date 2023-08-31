@@ -10,6 +10,7 @@
     <tr>
         <td>No.</td>
         <td>Name</td>
+        <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -18,6 +19,7 @@
         <tr>
             <td>{{ $departments->firstItem() + $key }}.</td>
             <td>{{ $department->name }}</td>
+            <td>{{ $department->created_at->format('F d, Y') }}</td>
             <td>
                 <a href="{{ route('departments.edit', $department) }}">Edit</a>
 
@@ -29,7 +31,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="8">No data found in table</td>
+            <td colspan="6">No data found in table</td>
         </tr>
     @endforelse
     </tbody>

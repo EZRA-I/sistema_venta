@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provider;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -17,8 +18,9 @@ class ProductController extends Controller
 
     public function create()
     {
+        $providers = Provider::orderBy('name')->get();
         $categories = Category::orderBy('name')->get();
-        return view('products.create', compact('categories'));
+        return view('products.create', compact('providers','categories'));
     }
 
     public function store(Request $request)
@@ -27,6 +29,7 @@ class ProductController extends Controller
             'name' => 'required|max:255',
             'price' => 'required|regex:/^\d{1,13}(\.\d{1,4})?$/|gt:0',
             'category_id' => 'required|integer',
+            'provider_id' => 'required|integer',
         ]);
 
         Product::create($data);
@@ -36,9 +39,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categories = Category::orderBy('name')->get();
 
-        return view('products.edit', compact('product', 'categories'));
+        $providers = Provider::orderBy('name')->get();
+        $categories = Category::orderBy('name')->get();
+        return view('products.edit', compact('product', 'providers', 'categories'));
     }
 
     public function update(Product $product, Request $request)
@@ -47,6 +51,7 @@ class ProductController extends Controller
             'name' => 'required|max:255',
             'price' => 'required|regex:/^\d{1,13}(\.\d{1,4})?$/|gt:0',
             'category_id' => 'required|integer',
+            'provider_id' => 'required|integer',
         ]);
 
         $product->update($data);

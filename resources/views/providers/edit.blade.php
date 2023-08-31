@@ -18,8 +18,8 @@
         @enderror
     </div>
     <div style="margin-bottom: 1em;">
-        <label for="last_name">Last_name</label>
-        <input type="text" name="last_name" id="last_name" placeholder="Enter Last_name" value="{{ $provider->last_name }}">
+        <label for="last_name">Last_Name</label>
+        <input type="text" name="last_name" id="last_name" placeholder="Enter last_name" value="{{ $provider->last_name }}">
         @error('last_name')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
@@ -53,6 +53,24 @@
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div>
+
+    <div style="margin-bottom: 1em;">
+        <label for="category_id">Category</label>
+        <select name="category_id" id="category_id">
+            <option value="">Select</option>
+            @foreach($categories as $category)
+                <option
+                    @if ($category->id === (int)$provider->city_id)
+                        selected
+                    @endif
+                    value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        @error('category_id')
+        <div style="color: red;">{{ $message }}</div>
+        @enderror
+    </div>
+
     <div style="margin-bottom: 1em;">
         <label for="city_id">City</label>
         <select name="city_id" id="city_id">
@@ -68,8 +86,9 @@
         @error('city_id')
         <div style="color: red;">{{ $message }}</div>
         @enderror
+    </div>
+
         <div>
             <button type="submit">Submit</button>
         </div>
-    </div>
 </form>

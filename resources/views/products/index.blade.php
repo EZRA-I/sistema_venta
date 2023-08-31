@@ -11,7 +11,9 @@
         <td>No.</td>
         <td>Name</td>
         <td>Price</td>
+        <td>Provider</td>
         <td>Category</td>
+        <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -22,8 +24,11 @@
             <td>{{ $product->name }}</td>
             <td>{{ $product->price }}</td>
             <td>
+                {{ $product->provider->name }}
+            </td><td>
                 {{ $product->category->name }}
             </td>
+            <td>{{ $product->created_at->format('F d, Y') }}</td>
             <td>
                 <a href="{{ route('products.edit', $product) }}">Edit</a>
 
@@ -35,7 +40,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="6">No data found in table</td>
+            <td colspan="8">No data found in table</td>
         </tr>
     @endforelse
     </tbody>

@@ -9,19 +9,18 @@ class Bill extends Model
 {
     use HasFactory;
 
-    protected $fillable =['employee_id', 'customer_id', 'description'];
+    protected $fillable =['employee_id', 'customer_id', 'city_id', 'subtotal', 'total'];
 
-    public function invoice_detail() {
-        return $this->hasMany(Bill::class);
+
+    public function employee() {
+        return $this->belongsto(Employee::class);
     }
-    public function empleyee() {
-        return $this->hasMany(Employee::class);
-    }
+
     public function customer() {
-            return $this->hasMany(Customer::class);
+            return $this->belongsto(Customer::class);
     }
 
-    public function product() {
-            return $this->hasMany(Product::class);
+    public function city() {
+        return $this->belongsto(City::class);
     }
 }

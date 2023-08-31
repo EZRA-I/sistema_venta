@@ -10,11 +10,12 @@
     <tr>
         <td>No.</td>
         <td>Name</td>
-        <td>Last_name</td>
+        <td>Surname</td>
         <td>Email</td>
         <td>Phone</td>
         <td>Address</td>
         <td>City</td>
+        <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -23,13 +24,16 @@
         <tr>
             <td>{{ $customers->firstItem() + $key }}.</td>
             <td>{{ $customer->name }}</td>
-            <td>{{ $customer->last_name }}</td>
+            <td>{{ $customer->surname }}</td>
             <td>{{ $customer->email }}</td>
             <td>{{ $customer->phone }}</td>
             <td>{{ $customer->address }}</td>
             <td>
                 {{ $customer->city->name }}
             </td>
+
+            <td>{{ $customer->created_at->format('F d, Y') }}</td>
+
             <td>
                 <a href="{{ route('customers.edit', $customer) }}">Edit</a>
 
@@ -41,7 +45,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="10">No data found in table</td>
+            <td colspan="11">No data found in table</td>
         </tr>
     @endforelse
     </tbody>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Category;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 
@@ -17,12 +18,14 @@ class ProviderController extends Controller
 
     public function create()
     {
+        $categories = Category::orderBy('name')->get();
         $cities = City::orderBy('name')->get();
-        return view('providers.create', compact('cities' )); //bills
+        return view('providers.create', compact('categories','cities' )); //bills
     }
 
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'name' => 'required|max:255',
             'last_name' => 'required|max:255',
@@ -30,6 +33,7 @@ class ProviderController extends Controller
             'phone' => 'required|max:255',
             'post' => 'required|max:255',
             'address' => 'required|max:255',
+            'category_id' =>'required|integer',
             'city_id' =>'required|integer',
         ]);
 
@@ -43,8 +47,9 @@ class ProviderController extends Controller
 
     public function edit(Provider $provider)
     {
+        $categories = Category::orderBy('name')->get();
         $cities = City::orderBy('name')->get();
-        return view ('providers.edit', compact('provider', 'cities'));
+        return view ('providers.edit', compact('provider', 'categories','cities'));
     }
 
     public function update(Provider $provider, Request $request)
@@ -56,6 +61,7 @@ class ProviderController extends Controller
             'post' => 'required|max:255',
             'address' => 'required|max:255',
             'phone' => 'required|max:255',
+            'category_id' =>'required|integer',
             'city_id' =>'required|integer',
         ]);
 

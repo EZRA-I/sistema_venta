@@ -10,12 +10,14 @@
     <tr>
         <td>No.</td>
         <td>Name</td>
-        <td>Last_name</td>
+        <td>Last_Name</td>
         <td>Email</td>
         <td>Post</td>
         <td>Address</td>
         <td>Phone</td>
+        <td>Category</td>
         <td>City</td>
+        <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -29,9 +31,16 @@
             <td>{{ $provider->post }}</td>
             <td>{{ $provider->address }}</td>
             <td>{{ $provider->phone }}</td>
+
+            <td>
+                {{ $provider->category->name }}
+            </td>
+
             <td>
                 {{ $provider->city->name }}
             </td>
+            <td>{{ $provider->created_at->format('F d, Y') }}</td>
+
 
             <td>
                 <a href="{{ route('providers.edit', $provider) }}">Edit</a>
@@ -44,7 +53,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="10">No data found in table</td>
+            <td colspan="11">No data found in table</td>
         </tr>
     @endforelse
     </tbody>

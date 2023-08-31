@@ -24,6 +24,24 @@
         <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
+
+    <div style="margin-bottom: 1em;">
+        <label for="provider_id">Provider</label>
+        <select name="provider_id" id="provider_id">
+            <option value="">Select</option>
+            @foreach($providers as $provider)
+                <option
+                    @if($provider->id === (int)old('provider_id'))
+                        selected
+                    @endif
+                    value="{{ $provider->id }}">{{ $provider->name }}</option>
+            @endforeach
+        </select>
+        @error('provider_id')
+        <div style="color: red;">{{ $message }}</div>
+        @enderror
+    </div>
+
     <div style="margin-bottom: 1em">
         <label for="category_id">Category</label>
         <select name="category_id" id="category_id">

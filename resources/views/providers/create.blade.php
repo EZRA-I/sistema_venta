@@ -16,19 +16,24 @@
         @error('name')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
-    </div><div style="margin-bottom: 1em;">
-        <label for="last_name">Last_name</label>
+    </div>
+
+    <div style="margin-bottom: 1em;">
+        <label for="last_name">Last_Name</label>
         <input type="text" name="last_name" id="last_name" placeholder="Enter last_name" value="{{ old('last_name') }}">
         @error('last_name')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
-    </div><div style="margin-bottom: 1em;">
+    </div>
+
+    <div style="margin-bottom: 1em;">
         <label for="email">Email</label>
         <input type="text" name="email" id="email" placeholder="Enter email" value="{{ old('email') }}">
         @error('email')
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div>
+
     <div style="margin-bottom: 1em;">
         <label for="post">Post</label>
         <input type="text" name="post" id="post" placeholder="Enter post" value="{{ old('post')}}">
@@ -36,6 +41,7 @@
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div>
+
     <div style="margin-bottom: 1em;">
         <label for="address">Address</label>
         <input type="text" name="address" id="address" placeholder="Enter address" value="{{old('address') }}">
@@ -43,6 +49,7 @@
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div>
+
     <div style="margin-bottom: 1em;">
         <label for="phone">Phone</label>
         <input type="text" name="phone" id="phone" placeholder="Enter phone" value="{{ old('phone') }}">
@@ -50,6 +57,24 @@
         <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
+
+    <div style="margin-bottom: 1em;">
+        <label for="category_id">Category</label>
+        <select name="category_id" id="category_id">
+            <option value="">Select</option>
+            @foreach($categories as $category)
+                <option
+                    @if ($category->id === (int)old('category_id'))
+                        selected
+                    @endif
+                    value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        @error('category_id')
+        <div style="color: red;">{{ $message }}</div>
+        @enderror
+    </div>
+
     <div style="margin-bottom: 1em;">
         <label for="city_id">City</label>
         <select name="city_id" id="city_id">
@@ -62,10 +87,11 @@
                     value="{{ $city->id }}">{{ $city->name }}</option>
             @endforeach
         </select>
-        @error('$city_id')
+        @error('city_id')
         <div style="color: red;">{{ $message }}</div>
         @enderror
     </div>
+
     <div>
         <button type="submit">Submit</button>
     </div>

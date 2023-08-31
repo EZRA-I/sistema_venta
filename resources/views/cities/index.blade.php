@@ -12,6 +12,7 @@
         <td>Name</td>
         <td>Description</td>
         <td>Department</td>
+        <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
@@ -24,6 +25,7 @@
             <td>
                 {{ $city->department->name }}
             </td>
+            <td>{{ $city->created_at->format('F d, Y') }}</td>
             <td>
                 <a href="{{ route('cities.edit', $city) }}">Edit</a>
 
