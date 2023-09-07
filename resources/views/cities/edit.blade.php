@@ -18,8 +18,8 @@
         @enderror
     </div>
     <div style="margin-bottom: 1em;">
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" placeholder="Enter description" value="{{ $city->description }}">
+        <label  class="form-label" for="description">Description</label>
+        <input class="form-control-textarea" type="text" name="description" id="description" placeholder="Enter description" value="{{ $city->description }}">
         @error('description')
         <div style="color: red;">{{ $message }}"</div>
         @enderror

@@ -17,6 +17,15 @@
         <div style="color: red;">{{ $message }}"</div>
         @enderror
     </div>
+
+    <div style="margin-bottom: 1em;">
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" placeholder="Enter amount" value="{{ $product->amount }}">
+        @error('amount')
+        <div style="color: red;">{{ $message }}</div>
+        @enderror
+    </div>
+
     <div style="margin-bottom: 1em;">
         <label for="price">Price</label>
         <input type="text" name="price" id="price" placeholder="Enter price" value="{{ $product->price }}">

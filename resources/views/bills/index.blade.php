@@ -9,11 +9,11 @@
     <thead>
     <tr>
         <td>No.</td>
+        <td>Subtotal</td>
+        <td>Total</td>
         <td>Employee</td>
         <td>Customer</td>
         <td>City</td>
-        <td>Subtotal</td>
-        <td>Total</td>
         <td>Timestamp</td>
         <td>Action</td>
     </tr>

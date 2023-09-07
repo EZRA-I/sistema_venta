@@ -1,5 +1,5 @@
 <div><a href="/">Home</a></div>
-<a href={{ route('bills.create') }}>New Bill</a>
+<a href={{ route('detail_bills.create') }}>New Detail_Bill</a>
 
 @if(session('message'))
     <div style="color: green;">{{ session('message') }}</div>
@@ -9,37 +9,35 @@
     <thead>
     <tr>
         <td>No.</td>
-        <td>Employee</td>
-        <td>Customer</td>
-        <td>City</td>
-        <td>Subtotal</td>
-        <td>Total</td>
+        <td>amount</td>
+        <td>Bill</td>
+        <td>price</td>
+        <td>Product</td>
         <td>Timestamp</td>
         <td>Action</td>
     </tr>
     </thead>
     <tbody>
-    @forelse($bills as $key => $bill)
+    @forelse($detail_bills as $key => $detail_bill)
         <tr>
-            <td>{{ $bills->firstItem() + $key }}.</td>
-            <td>{{ $bill->total }}</td>
-            <td>{{ $bill->subtotal }}</td>
+            <td>{{ $detail_bills->firstItem() + $key }}.</td>
+            <td>{{ $detail_bill->amount }}</td>
             <td>
-                {{ $bill->employee->name }}
+                {{ $detail_bill->bill->id }}
             </td>
+            <td>{{ $detail_bill->price }}</td>
+
             <td>
-                {{ $bill->customer->name }}
+                {{ $detail_bill->product->name }}
             </td>
-            <td>
-                {{ $bill->city->name }}
-            </td>
-            <td>{{ $bill->created_at->format('F d, Y') }}</td>
+
+            <td>{{ $detail_bill->created_at->format('F d, Y') }}</td>
 
 
             <td>
-                <a href="{{ route('bills.edit', $bill) }}">Edit</a>
+                <a href="{{ route('detail_bills.edit', $detail_bill) }}">Edit</a>
 
-                <form action="{{ route('bills.delete', $bill) }}" method="post">
+                <form action="{{ route('detail_bills.delete', $detail_bill) }}" method="post">
                     @csrf
                     <button type="submit">Delete</button>
                 </form>
@@ -47,7 +45,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="10">No data found in table</td>
+            <td colspan="8">No data found in table</td>
         </tr>
     @endforelse
     </tbody>

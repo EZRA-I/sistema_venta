@@ -10,6 +10,7 @@
     <tr>
         <td>No.</td>
         <td>Name</td>
+        <td>Amount</td>
         <td>Price</td>
         <td>Provider</td>
         <td>Category</td>
@@ -22,6 +23,7 @@
         <tr>
             <td>{{ $products->firstItem() + $key}}.</td>
             <td>{{ $product->name }}</td>
+            <td>{{ $product->amount }}</td>
             <td>{{ $product->price }}</td>
             <td>
                 {{ $product->provider->name }}
@@ -40,7 +42,7 @@
         </tr>
     @empty
         <tr>
-            <td colspan="8">No data found in table</td>
+            <td colspan="9">No data found in table</td>
         </tr>
     @endforelse
     </tbody>

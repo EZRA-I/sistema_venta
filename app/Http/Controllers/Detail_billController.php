@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Detail_bill;
-use App\Models\Product;
 use App\Models\Bill;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class Detail_billController extends Controller
@@ -18,7 +18,7 @@ class Detail_billController extends Controller
 
     public function create()
     {
-        $bills = Bill::orderBy('name')->get();
+        $bills = Bill::orderBy('total')->get();
         $products = Product::orderBy('name')->get();
         return view('detail_bills.create', compact( 'bills', 'products'));
     }
@@ -27,10 +27,10 @@ class Detail_billController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'product_id' => 'required|integer',
             'amount' => 'required|max:255',
             'price' => 'required|max:255',
             'bill_id' => 'required|integer',
+            'product_id' => 'required|integer',
 
         ]);
 
@@ -39,20 +39,21 @@ class Detail_billController extends Controller
         return back()->with('message', 'Detail_bill created successfully');
     }
 
-    public function edit(Detail_bill $detail_bill)
+    public function edit(Detail_bill $detail_bills)
     {
-        $bills = Bill::orderBy('name')->get();
+        $bills = Bill::orderBy('total')->get();
         $products = Product::orderBy('name')->get();
-        return view('detail_bills.edit', compact('bills', 'products'));
+        return view('detail_bills.edit', compact('detail_bills', 'bills', 'products'));
     }
 
     public function update( detail_bill $detail_bill, Request $request)
     {
         $data =$request->validate([
-            'product_id' => 'required|integer',
             'amount' => 'required|max:255',
             'price' => 'required|max:255',
             'bill_id' => 'required|integer',
+            'product_id' => 'required|integer',
+
         ]);
 
         $detail_bill->update($data);

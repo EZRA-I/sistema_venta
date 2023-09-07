@@ -59,16 +59,17 @@
             <option value="">Select</option>
             @foreach($cities as $city)
                 <option
-                    @if ($city->id === (int)$customer->city_id)
+                    @if ($city->id === (int)$bill->city_id)
                         selected
                     @endif
                     value="{{ $city->id }}">{{ $city->name }}</option>
             @endforeach
         </select>
         @error('city_id')
-    </div>
         <div style="color: red;">{{ $message }}</div>
         @enderror
+    </div>
+
         <div>
             <button type="submit">Submit</button>
         </div>

@@ -27,6 +27,7 @@ class ProductController extends Controller
     {
         $data =$request->validate([
             'name' => 'required|max:255',
+            'amount' => 'required|max:255',
             'price' => 'required|regex:/^\d{1,13}(\.\d{1,4})?$/|gt:0',
             'category_id' => 'required|integer',
             'provider_id' => 'required|integer',
@@ -49,6 +50,7 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|max:255',
+            'amount' => 'required|max:255',
             'price' => 'required|regex:/^\d{1,13}(\.\d{1,4})?$/|gt:0',
             'category_id' => 'required|integer',
             'provider_id' => 'required|integer',
